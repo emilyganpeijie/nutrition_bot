@@ -58,8 +58,8 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
                 resultDICT["source"] = "reply"
         else:
             # write your code here
-            resultDICT[meas].append(0)
-            resultDICT[food].append(2)
+            resultDICT["meas"].append(0)
+            resultDICT["food"].append(2)
             pass
 
     if utterance == "一杯超級好喝的奶茶":
