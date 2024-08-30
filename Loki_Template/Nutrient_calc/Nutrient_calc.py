@@ -295,12 +295,6 @@ def testLoki(inputLIST, filterLIST):
         print(resultDICT["msg"])
 
 def testIntent():
-    # food_intake
-    print("[TEST] food_intake")
-    inputLIST = ['一碗100克的白飯','一杯超級好喝的奶茶','100g世界上最好吃的雞胸']
-    testLoki(inputLIST, ['food_intake'])
-    print("")
-
     # Age
     print("[TEST] Age")
     inputLIST = ['8歲']
@@ -313,25 +307,24 @@ def testIntent():
     testLoki(inputLIST, ['Gender'])
     print("")
 
+    # food_intake
+    print("[TEST] food_intake")
+    inputLIST = ['一碗100克的白飯']
+    testLoki(inputLIST, ['food_intake'])
+    print("")
+
 
 if __name__ == "__main__":
     # 測試所有意圖
-    #testIntent()
+    testIntent()
 
     # 測試其它句子
     filterLIST = []
     splitLIST = ["！", "，", "。", "？", "!", ",", "\n", "；", "\u3000", ";"]
     # 設定參考資料
     refDICT = { # value 必須為 list
-        "age": [],
-        "gen": [],
-        "food": [],
-        "meas": []
+        #"key": []
     }
-    #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, refDICT=refDICT)                      # output => {"key": ["今天天氣"]}
-    #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
-    #resultDICT = execLoki(["今天天氣如何？", "後天氣象如何？"], filterLIST=filterLIST, refDICT=refDICT)                # output => {"key": ["今天天氣", "後天氣象"]}
-    
-    inputSTR = ""
-    resultDICT = execLoki(inputSTR, refDICT=refDICT)
-    print(resultDICT)
+    resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, refDICT=refDICT)                      # output => {"key": ["今天天氣"]}
+    resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
+    resultDICT = execLoki(["今天天氣如何？", "後天氣象如何？"], filterLIST=filterLIST, refDICT=refDICT)                # output => {"key": ["今天天氣", "後天氣象"]}
