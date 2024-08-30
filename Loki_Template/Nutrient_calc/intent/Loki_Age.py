@@ -56,7 +56,14 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             resultDICT["response"] = getResponse(utterance, args)
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
+<<<<<<< HEAD
         else:         
             resultDICT["age"].append(args[1])
+=======
+        else:
+            # write your code here
+            # resultDICT[key].append(value)
+            pass
+>>>>>>> 1f1361a272febe9670b75588512e9284658a4969
 
     return resultDICT
