@@ -301,16 +301,16 @@ def testIntent():
     testLoki(inputLIST, ['food_intake'])
     print("")
 
-    # Gender
-    print("[TEST] Gender")
-    inputLIST = ['女']
-    testLoki(inputLIST, ['Gender'])
-    print("")
-
     # Age
     print("[TEST] Age")
     inputLIST = ['8歲']
     testLoki(inputLIST, ['Age'])
+    print("")
+
+    # Gender
+    print("[TEST] Gender")
+    inputLIST = ['女']
+    testLoki(inputLIST, ['Gender'])
     print("")
 
 
@@ -322,6 +322,7 @@ if __name__ == "__main__":
     filterLIST = []
     splitLIST = ["！", "，", "。", "？", "!", ",", "\n", "；", "\u3000", ";"]
     # 設定參考資料
+<<<<<<< HEAD
     refDICT = {
         "age": [], 
         "gen": [], 
@@ -335,3 +336,11 @@ if __name__ == "__main__":
     resultDICT = execLoki("9歲", refDICT=refDICT)
     
     print(resultDICT)
+=======
+    refDICT = { # value 必須為 list
+        #"key": []
+    }
+    resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, refDICT=refDICT)                      # output => {"key": ["今天天氣"]}
+    resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
+    resultDICT = execLoki(["今天天氣如何？", "後天氣象如何？"], filterLIST=filterLIST, refDICT=refDICT)                # output => {"key": ["今天天氣", "後天氣象"]}
+>>>>>>> 1f1361a272febe9670b75588512e9284658a4969
