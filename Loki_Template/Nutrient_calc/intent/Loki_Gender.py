@@ -57,6 +57,12 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
+<<<<<<< HEAD
             resultDICT["gen"].append(args[1])
+=======
+            # write your code here
+            # resultDICT[key].append(value)
+            pass
+>>>>>>> 1f1361a272febe9670b75588512e9284658a4969
 
     return resultDICT
