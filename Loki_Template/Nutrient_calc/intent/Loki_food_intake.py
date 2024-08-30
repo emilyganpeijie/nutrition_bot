@@ -57,8 +57,9 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            # write your code here
-            # resultDICT[key].append(value)
+            resultDICT["clf"].append(args[1])
+            resultDICT["meas"].append(args[3])
+            resultDICT["food"].append(args[8])
             pass
 
     return resultDICT
