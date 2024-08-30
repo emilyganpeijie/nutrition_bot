@@ -69,6 +69,8 @@ class BotClient(discord.Client):
             elif msgSTR.lower() in ["哈囉","嗨","你好","您好","hi","hello"]:
                 #有講過話(判斷對話時間差)
                 if message.author.id in self.mscDICT.keys():
+                    timeReset = datetime.time(3,0,0,0, tzinfo=datetime.timezone(datetime.timedelta(hours=8)))
+                    #設定更新紀錄時間為台灣時區每天凌晨三點
                     timeDIFF = datetime.now() - self.mscDICT[message.author.id]["updatetime"]
                     #有講過話，但與上次差超過 5 分鐘(視為沒有講過話，刷新template)
                     if timeDIFF.total_seconds() >= 300:
