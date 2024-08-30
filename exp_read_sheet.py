@@ -22,15 +22,31 @@ def age_matcher(n):
         else:
                 return "71Y"
 
-data = pd.read_excel(r'./dietary_reference_intakes.xlsx', header=1)
+def dri_matcher(age, substance, kind):
+        data = pd.read_excel(r'./dietary_reference_intakes.xlsx', header=1) 
+        df = pd.DataFrame(data)
+        
+        if kind:
+                a = df.where(df==age).dropna(how='all').dropna(axis=1)            #比對年齡、找row
+                amount = int(df.loc[a.index, substance])                             #找column
+                print("a.index", a.index)
+                unit = df.loc[0, substance]                                          #找單位
+                return amount, unit
+        else:
+                return "全部印"
+
+
+kind = True                                                    # kind: [True = specific, False = all nutrients]
+age = age_matcher(int(input("enter age: ")))                     # age in
+substance = input("enter nutrient: ")                            # nutrient in
+
+if kind:
+        print(dri_matcher(age, substance, kind)[0], dri_matcher(age, substance, kind)[1])
+else:
+        print(dri_matcher(age, substance, kind))
+
+print(age)
+data = pd.read_excel(r'./dietary_reference_intakes.xlsx', header=1) 
 df = pd.DataFrame(data)
-
-age = age_matcher(int(input("enter age: ")))                     #輸入年齡、轉換成相符區間
-substance = input("enter nutrient: ")
-
-a = df.where(df==age).dropna(how='all').dropna(axis=1)            #比對年齡、找row
-amount = int(df.loc[a.index, substance])                             #找column
-unit = df.loc[0, substance]                                          #找單位
-
-print(amount, unit)
-#print("原資料：\n", df)
+print("原資料：\n", df)
+print("test: ", df.loc[5, substance])
