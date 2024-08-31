@@ -60,6 +60,15 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             resultDICT["clf"].append(args[1])
             resultDICT["meas"].append(args[3])
             resultDICT["food"].append(args[8])
-            pass
+    
+            if utterance == "我吃了一份雞胸":
+                if CHATBOT_MODE:
+                    resultDICT["response"] = getResponse(utterance, args)
+                    if resultDICT["response"]:
+                        resultDICT["source"] = "reply"
+                else:
+                    resultDICT["clf"].append(args[7])
+                    resultDICT["meas"].append(args[9])
+                    resultDICT["food"].append(args[13])    
 
     return resultDICT
