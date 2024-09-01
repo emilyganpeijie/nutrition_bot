@@ -59,7 +59,7 @@ try:
     from toolkit.LLM import callLLM
 except:
     CHATBOT_MODE = False
-
+    
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 CWD_PATH = str(Path.cwd())
 
@@ -309,7 +309,7 @@ def testIntent():
 
     # food_intake
     print("[TEST] food_intake")
-    inputLIST = ['一碗100克的白飯']
+    inputLIST = ['一碗100克的白飯', '我吃了一份雞胸']
     testLoki(inputLIST, ['food_intake'])
     print("")
 
@@ -333,6 +333,6 @@ if __name__ == "__main__":
     #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
     #resultDICT = execLoki(["今天天氣如何？", "後天氣象如何？"], filterLIST=filterLIST, refDICT=refDICT)                # output => {"key": ["今天天氣", "後天氣象"]}
     
-    inputSTR = "我是一位女性"
+    inputSTR = "我吃了一份100g的雞胸"
     resultDICT = execLoki(inputSTR, refDICT=refDICT)
     print(resultDICT)    
