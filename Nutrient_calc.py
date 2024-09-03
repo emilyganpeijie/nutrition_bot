@@ -312,6 +312,12 @@ def testIntent():
     inputLIST = ['一碗100克的白飯', '我吃了一份雞胸']
     testLoki(inputLIST, ['food_intake'])
     print("")
+    
+    # nutrient
+    print("[TEST] nutrient")
+    inputLIST = ['營養','維生素A']
+    testLoki(inputLIST, ['nutrient'])
+    print("")      
 
 
 if __name__ == "__main__":
@@ -327,7 +333,9 @@ if __name__ == "__main__":
         "gen": [],
         "clf": [], 
         "meas": [],
-        "food": []
+        "food": [],
+        "nutrient": [], 
+        "nutrient_all": []
     }
     #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, refDICT=refDICT)                      # output => {"key": ["今天天氣"]}
     #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
