@@ -1,0 +1,32 @@
+{
+    "language": "zh-tw",
+    "type": "advance",
+    "version": {
+        "atk": "v271",
+        "intent": "1.0"
+    },
+    "user_defined": {},
+    "utterance": {
+        "全部": {
+            "id": "3060fa5c-36bf-4d52-88b2-22506ef12262",
+            "pos": "<QUANTIFIER>全部</QUANTIFIER>",
+            "lexy": [],
+            "pattern": "<QUANTIFIER>[^<]+</QUANTIFIER>"
+        },
+        "營養": {
+            "id": "5e5e7116-8481-422d-acfe-47043ddedf14",
+            "pos": "<ENTITY_noun>營養</ENTITY_noun>",
+            "lexy": [],
+            "pattern": "(?:(<QUANTIFIER>([^<]+)</QUANTIFIER>)|(<(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>(?:(營養|營養素|維生素))</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>))"
+        },
+        "維生素A": {
+            "id": "317b065e-1034-4ece-b8b7-fc8ccf3ce090",
+            "pos": "<KNOWLEDGE_chemical>維生素A</KNOWLEDGE_chemical>",
+            "lexy": [],
+            "pattern": "<KNOWLEDGE_chemical>([^<]+)</KNOWLEDGE_chemical>"
+        }
+    },
+    "alias": {},
+    "prompt": {},
+    "document": []
+}
