@@ -59,7 +59,7 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
         else:
             resultDICT["clf"].append(args[1])
             resultDICT["meas"].append(args[3])
-            resultDICT["food"].append(args[8])
+            resultDICT["food"].append(args[11])
     
     if utterance == "我吃了一份雞胸":
         if CHATBOT_MODE:
