@@ -107,10 +107,15 @@ class BotClient(discord.Client):
                 logging.debug("######\nLoki 處理結果如下：")
                 logging.debug(resultDICT)
                 
-                if len(resultDICT["age"]) != 0:
+                if len(resultDICT["nutrient"]) != 0:
+                    self.mscDICT["nutrient"] = resultDICT["nutrient"][0]
+                    replySTR = "請輸入年齡（如：10歲）"                
+                elif len(resultDICT["age"]) != 0:
+                    self.mscDICT["age"] = resultDICT["age"][0]
                     replySTR = "請輸入性別（如：女生）"
                 elif len(resultDICT["gen"]) != 0:
-                    replySTR = "好的！您一天所需的營養如下："
+                    self.mscDICT["gen"] = resultDICT["gen"][0]
+                    replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})您一天所需的營養如下：".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])
                 else:
                     print("yet_to_process_food")                
                 
