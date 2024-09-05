@@ -26,7 +26,8 @@ def getLokiResult(inputSTR):
         "gen": [],
         "clf": [], 
         "meas": [],
-        "food": []
+        "food": [],
+        "nutrient": []
     }    
     resultDICT = runLoki(inputLIST, filterLIST, refDICT)
     
@@ -55,7 +56,8 @@ class BotClient(discord.Client):
                         "gen": None,
                         "clf": None,
                         "meas": None,
-                        "food": None
+                        "food": None,
+                        "nutrient": None
         }
         # ####################################################################################
         print('Logged on as {} with id {}'.format(self.user, self.user.id))
@@ -104,9 +106,7 @@ class BotClient(discord.Client):
                 logging.debug("######\nLoki 處理結果如下：")
                 logging.debug(resultDICT)
                 
-                if len(resultDICT["age"]) == 0:
-                    replySTR = "請輸入年齡（如：25歲）"
-                elif len(resultDICT["age"]) != 0:
+                if len(resultDICT["age"]) != 0:
                     replySTR = "請輸入性別（如：女生）"
                 elif len(resultDICT["gen"]) != 0:
                     replySTR = "好的！您一天所需的營養如下："
