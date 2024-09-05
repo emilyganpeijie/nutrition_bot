@@ -27,13 +27,7 @@ def getLokiResult(inputSTR):
         "clf": [], 
         "meas": [],
         "food": [],
-<<<<<<< HEAD
         "nutrient": []
-=======
-        "nutrient": [],
-        "nutrient_all": []
-        
->>>>>>> a782c9a33a962c6ecfa13c902e93e87a7175f1ec
     }    
     resultDICT = runLoki(inputLIST, filterLIST, refDICT)
     
@@ -63,12 +57,7 @@ class BotClient(discord.Client):
                         "clf": None,
                         "meas": None,
                         "food": None,
-<<<<<<< HEAD
                         "nutrient": None
-=======
-                        "nutrient": [],
-                        "nutrient_all": []                        
->>>>>>> a782c9a33a962c6ecfa13c902e93e87a7175f1ec
         }
         # ####################################################################################
         print('Logged on as {} with id {}'.format(self.user, self.user.id))
