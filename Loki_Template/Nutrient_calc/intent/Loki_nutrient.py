@@ -57,8 +57,7 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            # write your code here
-            # resultDICT[key].append(value)
+            resultDICT["nutrient"].append([6])
             pass
 
     if utterance == "可以攝取多少鈉":
@@ -67,8 +66,7 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            # write your code here
-            # resultDICT[key].append(value)
+            resultDICT["nutrient"].append([2])
             pass
 
     if utterance == "需要攝取多少營養":
@@ -77,8 +75,7 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            # write your code here
-            # resultDICT[key].append(value)
+            resultDICT["nutrient"].append([9])
             pass
 
     if utterance == "需要攝取多少維生素A":
@@ -87,8 +84,7 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            # write your code here
-            # resultDICT[key].append(value)
+            resultDICT["nutrient"].append([7])
             pass
 
     return resultDICT
