@@ -22,31 +22,46 @@ def age_matcher(n):
         else:
                 return "71Y"
 
-def dri_matcher(age, substance, kind):
+def dri_matcher(age, gen, substance, kind):
         data = pd.read_excel(r'./dietary_reference_intakes.xlsx', header=1) 
         df = pd.DataFrame(data)
+        if gen == "男":
+                substance = gen + substance
+        nu_total = ["維生素A", "維生素D", "維生素E", "維生素K", "維生素C", "維生素B1", "維生素B2", "菸鹼素", "維生素B6", "維生素B12", "葉酸", "鈣", "磷", "鎂", "鐵", "鋅", "碘", "鉀", "鈉"]
+        a = df.where(df==age).dropna(how='all').dropna(axis=1)            #比對年齡、找row
         
         if kind:
-                a = df.where(df==age).dropna(how='all').dropna(axis=1)            #比對年齡、找row
-                amount = int(df.loc[a.index, substance])                             #找column
-                print("a.index", a.index)
+                amount = float(df.loc[a.index, substance])                             #找column
                 unit = df.loc[0, substance]                                          #找單位
                 return amount, unit
         else:
-                return "全部印"
+                ret = {}
+                for i in nu_total:
+                        sub = i
+                        if gen == "男":
+                                sub = gen + i
+                        amount = float(df.loc[a.index, sub])                            #找column
+                        unit = df.loc[0, sub]                                          #找單位
+                        print(i,":", amount, unit)
+                        ret[i] = str(amount) + unit
+                return ret
 
 
-kind = True                                                    # kind: [True = specific, False = all nutrients]
-age = age_matcher(int(input("enter age: ")))                     # age in
-substance = input("enter nutrient: ")                            # nutrient in
-
-if kind:
-        print(dri_matcher(age, substance, kind)[0], dri_matcher(age, substance, kind)[1])
-else:
-        print(dri_matcher(age, substance, kind))
-
-print(age)
-data = pd.read_excel(r'./dietary_reference_intakes.xlsx', header=1) 
-df = pd.DataFrame(data)
-print("原資料：\n", df)
-print("test: ", df.loc[5, substance])
+def start_dri(age, gen, substance):
+        #age = age_matcher(int(input("enter age: ")))                     # age in
+        #gen = input("enter gender:")                                     # gender in
+        if gen == "男" or gen == "男性" or gen == "男生" or gen == "生理男" or gen == "性別男":
+                gen = "男"
+        #substance = input("enter nutrient: ")                            # nutrient in
+        kind = True
+        if substance == "營養":
+                kind = False                                                    # kind: [True = specific, False = all nutrients]
+        if kind:
+                return dri_matcher(age, gen, substance, kind)[0], dri_matcher(age, gen, substance, kind)[1]
+                #print(substance, ":", dri_matcher(age, gen, substance, kind)[0], dri_matcher(age, gen, substance, kind)[1])
+        else:
+                ret = dri_matcher(age, gen, substance, kind)
+                for ind, value in ret.items():
+                        return ind, value
+                        #print(ind, ":", value)
+                #print(substance, ":", dri_matcher(age, gen, substance, kind)[1], dri_matcher(age, gen, substance, kind)[2])
