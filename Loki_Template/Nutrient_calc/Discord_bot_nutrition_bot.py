@@ -5,6 +5,7 @@ import logging
 import discord
 import json
 import re
+import pandas as pd
 from datetime import datetime
 from pprint import pprint
 
