@@ -97,7 +97,8 @@ class BotClient(discord.Client):
                 #沒有講過話(給他一個新的template)
                 else:
                     self.mscDICT[message.author.id] = self.resetMSCwith(message.author.id)
-                    replySTR = "嗨，我是你的營養計算小幫手，\n我可以幫你計算今天已經攝取的營養\n或是今天需要的營養"
+                    replySTR = "嗨，我是你的營養計算小幫手，\n我可以幫你計算今天已經攝取的營養\n或是今天需要的營養(例：我今天需要攝取多少營養)"
+    
 
 # ##########非初次對話：這裡用 Loki 計算語意
             else: #開始處理正式對話
