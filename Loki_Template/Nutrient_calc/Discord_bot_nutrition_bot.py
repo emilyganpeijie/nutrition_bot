@@ -27,7 +27,13 @@ def getLokiResult(inputSTR):
         "clf": [], 
         "meas": [],
         "food": [],
+<<<<<<< HEAD
         "nutrient": []
+=======
+        "nutrient": [],
+        "nutrient_all": []
+        
+>>>>>>> a782c9a33a962c6ecfa13c902e93e87a7175f1ec
     }    
     resultDICT = runLoki(inputLIST, filterLIST, refDICT)
     
@@ -57,7 +63,12 @@ class BotClient(discord.Client):
                         "clf": None,
                         "meas": None,
                         "food": None,
+<<<<<<< HEAD
                         "nutrient": None
+=======
+                        "nutrient": [],
+                        "nutrient_all": []                        
+>>>>>>> a782c9a33a962c6ecfa13c902e93e87a7175f1ec
         }
         # ####################################################################################
         print('Logged on as {} with id {}'.format(self.user, self.user.id))
@@ -97,7 +108,7 @@ class BotClient(discord.Client):
                 #沒有講過話(給他一個新的template)
                 else:
                     self.mscDICT[message.author.id] = self.resetMSCwith(message.author.id)
-                    replySTR = msgSTR.title()
+                    replySTR = "嗨，我是你的營養計算小幫手，\n我可以幫你計算今天已經攝取的營養\n或是今天需要的營養"
 
 # ##########非初次對話：這裡用 Loki 計算語意
             else: #開始處理正式對話
