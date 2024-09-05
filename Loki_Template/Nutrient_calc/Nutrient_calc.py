@@ -59,7 +59,7 @@ try:
     from toolkit.LLM import callLLM
 except:
     CHATBOT_MODE = False
-    
+
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 CWD_PATH = str(Path.cwd())
 
@@ -309,15 +309,15 @@ def testIntent():
 
     # food_intake
     print("[TEST] food_intake")
-    inputLIST = ['一碗100克的白飯', '我吃了一份雞胸']
+    inputLIST = ['一碗100克的白飯','我吃了一份雞胸']
     testLoki(inputLIST, ['food_intake'])
     print("")
-    
+
     # nutrient
     print("[TEST] nutrient")
-    inputLIST = ['營養','維生素A']
+    inputLIST = ['可以攝取多少鈉','可以攝取多少營養','需要攝取多少營養','需要攝取多少維生素A']
     testLoki(inputLIST, ['nutrient'])
-    print("")    
+    print("")
 
 
 if __name__ == "__main__":
@@ -328,19 +328,17 @@ if __name__ == "__main__":
     filterLIST = []
     splitLIST = ["！", "，", "。", "？", "!", ",", "\n", "；", "\u3000", ";"]
     # 設定參考資料
-    refDICT = { 
+    refDICT = {
         "age": [],
         "gen": [],
         "clf": [], 
         "meas": [],
-        "food": [],
-        "nutrient": [], 
-        "nutrient_all": []
+        "food": []
     }
     #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, refDICT=refDICT)                      # output => {"key": ["今天天氣"]}
     #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
     #resultDICT = execLoki(["今天天氣如何？", "後天氣象如何？"], filterLIST=filterLIST, refDICT=refDICT)                # output => {"key": ["今天天氣", "後天氣象"]}
     
-    inputSTR = "我吃了一份100g的雞胸"
+    inputSTR = "55歲"
     resultDICT = execLoki(inputSTR, refDICT=refDICT)
     print(resultDICT)    
