@@ -10,6 +10,7 @@ from datetime import datetime
 from pprint import pprint
 
 from Nutrient_calc import runLoki
+from exp_read_sheet import start_dri
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -114,11 +115,21 @@ class BotClient(discord.Client):
                 elif len(resultDICT["age"]) != 0:
                     self.mscDICT["age"] = resultDICT["age"][0]
                     replySTR = "請輸入性別（如：女生）"
-                elif len(resultDICT["gen"]) != 0:
+                else: #len(resultDICT["gen"]) != 0:
                     self.mscDICT["gen"] = resultDICT["gen"][0]
-                    replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})您一天所需的營養如下：".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])
-                else:
-                    print("yet_to_process_food")                
+                    #replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})您一天所需的營養如下：".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])
+                    if self.mscDICT["nutrient"] == "營養":
+                        ret = start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])
+                        out_str = str()
+                        for ind, value in ret.items():
+                            out_str = out_str + ind + " : " + value + "\n"
+                        replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1})您一天所需的營養如下：\n{3}".format(self.mscDICT["age"], self.mscDICT["gen"], out_str)
+                    else:
+                        replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})您一天所需的營養如下：\n{3}: {4} {5}".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"], self.mscDICT["nutrient"], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[0], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[1])
+                        #self.mscDICT["nutrient"], ":", start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[0], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[1]
+                        
+                #else:
+                    #print("yet_to_process_food")                
                 
                 
             await message.reply(replySTR)
