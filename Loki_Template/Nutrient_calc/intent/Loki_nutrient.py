@@ -66,7 +66,7 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            resultDICT["nutrient"].append(args[2])
+            resultDICT["nutrient"].append(args[4])
             pass
 
     if utterance == "需要攝取多少營養":
