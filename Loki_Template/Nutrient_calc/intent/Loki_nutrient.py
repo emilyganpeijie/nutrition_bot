@@ -51,21 +51,44 @@ def getResponse(utterance, args):
 
 def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
     debugInfo(inputSTR, utterance)
-
-    if utterance == "營養":
+    if utterance == "可以攝取多少營養":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            resultDICT[nutrient_all].append(args[2]) or resultDICT[nutrient_all].append(args[6])
+            # write your code here
+            # resultDICT[key].append(value)
+            pass
 
-    if utterance == "維生素A":
+    if utterance == "可以攝取多少鈉":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
             if resultDICT["response"]:
                 resultDICT["source"] = "reply"
         else:
-            resultDICT[nutrient].append(args[1])
+            # write your code here
+            # resultDICT[key].append(value)
+            pass
+
+    if utterance == "需要攝取多少營養":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+            if resultDICT["response"]:
+                resultDICT["source"] = "reply"
+        else:
+            # write your code here
+            # resultDICT[key].append(value)
+            pass
+
+    if utterance == "需要攝取多少維生素A":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+            if resultDICT["response"]:
+                resultDICT["source"] = "reply"
+        else:
+            # write your code here
+            # resultDICT[key].append(value)
+            pass
 
     return resultDICT
