@@ -83,7 +83,7 @@ class BotClient(discord.Client):
                 replySTR = "pong pong"
 
 # ##########初次對話：這裡是 keyword trigger 的。
-            elif msgSTR.lower() in ["哈囉","嗨","你好","您好","hi","hello"]:
+            elif msgSTR.lower() in ["哈囉","嗨","你好","您好","hi","hello", "hey"]:
                 #有講過話(判斷對話時間差)
                 if message.author.id in self.mscDICT.keys():
                     #timeReset = datetime.time(3,0,0,0, tzinfo=datetime.timezone(datetime.timedelta(hours=8)))
@@ -108,9 +108,14 @@ class BotClient(discord.Client):
                 resultDICT = getLokiResult(msgSTR)
                 logging.debug("######\nLoki 處理結果如下：")
                 logging.debug(resultDICT)
+                nu_total = ["營養", "維生素A", "維生素D", "維生素E", "維生素K", "維生素C", "維生素B1", "維生素B2", "菸鹼素", "維生素B6", "維生素B12", "葉酸", "鈣", "磷", "鎂", "鐵", "鋅", "碘", "鉀", "鈉"]
+                #if resultDICT["nutrient"][0] not in nu_total:
+                    #print("got it!")
+                    #resultDICT["nutrient"] = []
+                    #replySTR = "我們目前沒有提供該營養素的計算喔！您可以詢問的有：{}".format("維生素A, 維生素D, 維生素E, 維生素K, 維生素C, 維生素B1, 維生素B2, 菸鹼素, 維生素B6, 維生素B12, 葉酸, 鈣, 磷, 鎂, 鐵, 鋅, 碘, 鉀, 鈉")
                 
                 if len(resultDICT["nutrient"]) != 0:
-                    self.mscDICT["nutrient"] = resultDICT["nutrient"][0]
+                    self.mscDICT["nutrient"] = resultDICT["nutrient"][0].upper()
                     replySTR = "請輸入年齡（如：10歲）"                
                 elif len(resultDICT["age"]) != 0:
                     self.mscDICT["age"] = resultDICT["age"][0]
@@ -122,7 +127,7 @@ class BotClient(discord.Client):
                         out_str = str()
                         for ind, value in ret.items():
                             out_str = out_str + ind + " : " + value + "\n"
-                        replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1})\n您一天所需的營養為：\n{3}".format(self.mscDICT["age"], self.mscDICT["gen"], out_str)
+                        replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1})\n您一天所需的營養為：\n{2}".format(self.mscDICT["age"], self.mscDICT["gen"], out_str)
                     else:
                         replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})\n您一天所需的營養為：\n{3}: {4} {5}".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"], self.mscDICT["nutrient"], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[0], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[1])              
                 
