@@ -15,7 +15,7 @@ Nutrient Calculator是一款可以根據年齡及性別推薦每日需要營養�
 ***
 ## 聯絡資訊
 [Ellen](https://github.com/ellenyp) ivickie621@gmail.com<br>
-[Emily](https://github.com/emilyganpeijie)ganpeijie3@gmail.com
+[Emily](https://github.com/emilyganpeijie) ganpeijie3@gmail.com
 
 
 
