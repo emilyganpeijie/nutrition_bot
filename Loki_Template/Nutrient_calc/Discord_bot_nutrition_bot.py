@@ -117,7 +117,6 @@ class BotClient(discord.Client):
                     replySTR = "請輸入性別（如：女生）"
                 else: #len(resultDICT["gen"]) != 0:
                     self.mscDICT["gen"] = resultDICT["gen"][0]
-                    #replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})您一天所需的營養如下：".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])
                     if self.mscDICT["nutrient"] == "營養":
                         ret = start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])
                         out_str = str()
@@ -125,12 +124,7 @@ class BotClient(discord.Client):
                             out_str = out_str + ind + " : " + value + "\n"
                         replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1})\n您一天所需的營養為：\n{3}".format(self.mscDICT["age"], self.mscDICT["gen"], out_str)
                     else:
-                        replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})\n您一天所需的營養為：\n{3}: {4} {5}".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"], self.mscDICT["nutrient"], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[0], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[1])
-                        #self.mscDICT["nutrient"], ":", start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[0], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[1]
-                        
-                #else:
-                    #print("yet_to_process_food")                
-                
+                        replySTR = "好的！您的資訊如下(年齡：{0}、性別：{1}、營養素：{2})\n您一天所需的營養為：\n{3}: {4} {5}".format(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"], self.mscDICT["nutrient"], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[0], start_dri(self.mscDICT["age"], self.mscDICT["gen"], self.mscDICT["nutrient"])[1])              
                 
             await message.reply(replySTR)
 
